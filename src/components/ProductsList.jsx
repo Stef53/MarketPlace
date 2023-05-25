@@ -11,11 +11,11 @@ const ProductsList = observer(() =>  {
   const lastProduct = product.limit * product.page 
 
   if(product.selectedCategory.name === 'all categories'){
-    thisProduct = product.products.filter(function(el) {
+    thisProduct = product.products.filter((el) => {
       return (firstProduct < product.products.indexOf(el)) && (product.products.indexOf(el) < lastProduct)
     })
   } else {
-    thisProduct = product.categoryProducts.filter(function(el) {
+    thisProduct = product.categoryProducts.filter((el) => {
       return (firstProduct < product.categoryProducts.indexOf(el)) && (product.categoryProducts.indexOf(el) < lastProduct)
     })
   }
