@@ -17,9 +17,9 @@ const ProductItem = observer(({item}) => {
 
 
   const onHeartClick = (item) => {
-    if(isLiked){
-      setIsLiked(false)
-    } else setIsLiked(true)
+    if(isLiked === false){
+      setIsLiked(true)
+    } else setIsLiked(false)
   }
 
   function addToBasket(item) {
@@ -45,7 +45,11 @@ const ProductItem = observer(({item}) => {
       <Card className=' justify-content-center product-card' style={{ boxShadow:'2px 2px 5px gray',}} border={"lightgray"}>
         <div>
           <div className='product-card'>
-          <Image className='card-img' src={item.image} style={{ cursor: 'pointer',}} onClick={() => history(PRODUCT_ROUTE + '/' + item.id)} />
+          <Image className='card-img' src={item.image} style={{ cursor: 'pointer',}} 
+          onClick={() => {
+            product.setCurrentPage('product')
+            history(PRODUCT_ROUTE + '/' + item.id)
+          }} />
           </div>
               <div>
               <div className='text-black-50 mt-1 d-flex justify-content-between align-items-center' >

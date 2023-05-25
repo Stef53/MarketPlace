@@ -39,7 +39,7 @@ const BasketModal = observer(() => {
   }
   return (
     <>
-      <Image width={30} height={30} style={{color: 'white'}} src={basket} onClick={handleShow}/>
+      <Image className='m-1 product-card' width={30} height={30} style={{color: 'white'}} src={basket} onClick={handleShow}/>
       <span 
         className=' '
         style={{border:'1px solid lightgray', color:'black', background:'white', borderRadius:'50%', width:'10', height:'10', fontSize:12}}
@@ -54,8 +54,7 @@ const BasketModal = observer(() => {
         <Modal.Body>
           <Form>
             {
-              product.basketProducts.length > 0 ?
-                showItems() : showNothing()
+              product.basketProducts.length > 0 ? showItems() : showNothing()
             }
           </Form>
         </Modal.Body>

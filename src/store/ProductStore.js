@@ -23,6 +23,7 @@ export default class ProductStore {
     this._basketProducts = []
     this._favoriteProducts = []
     this._searchValue = ''
+    this._currentPage = 'shop'
 
     makeAutoObservable(this)
   }
@@ -69,6 +70,9 @@ export default class ProductStore {
   setSearchValue(searchValue){
     this._searchValue = searchValue
   }
+  setCurrentPage(currentPage){
+    this._currentPage = currentPage
+  }
 
   get categories(){
     return this._categories
@@ -105,5 +109,8 @@ export default class ProductStore {
   }
   get searchValue(){
     return this._searchValue
+  }
+  get currentPage(){
+    return this._currentPage
   }
 }

@@ -1,3 +1,7 @@
+body{
+  height: 100vh;
+}
+
 .product-card{
   transition:all 0.3s;
 
@@ -22,6 +26,13 @@
 .svg-icon{
   cursor: pointer;
 }
-.svg-icon.active{
-  fill: red;
+.favorite-header{
+  width: 300px;
+  height: 80px;
+  font-size: 50px;
+  color: rgb(44, 44, 44);
+}
+.favorite-container{
+  border-radius: 30px;
+
 }

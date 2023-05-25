@@ -46,9 +46,6 @@ const Filters = observer(() => {
               {filter.name}
             </Dropdown.Item>
           )}
-            <Dropdown.Item onClick={() => product.setProducts(product.favoriteProducts)}>
-              Favorite
-            </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Container className='d-flex justify-content-end' >

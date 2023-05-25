@@ -7,7 +7,6 @@ import { Context } from '..';
 import { fetchCategoryProducts, fetchProducts } from '../http/productAPI';
 import Pages from '../components/Pages';
 import Filters from '../components/Filters'
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 
@@ -43,18 +42,6 @@ const ShopPage = observer(() => {
           />
         </Col>
         <Col md={9}>
-          <ToastContainer 
-            position="top-left"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
           <Filters />
           <ProductsList />
           <Pages />
