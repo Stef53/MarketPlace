@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Col, Image, Card } from 'react-bootstrap'
 import star from '../assets/icons/star.png'
 import plus from '../assets/icons/plus.png'

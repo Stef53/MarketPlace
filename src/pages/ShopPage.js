@@ -7,7 +7,7 @@ import { Context } from '..';
 import { fetchCategoryProducts, fetchProducts } from '../http/productAPI';
 import Pages from '../components/Pages';
 import Filters from '../components/Filters'
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 

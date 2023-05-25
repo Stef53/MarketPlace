@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { useContext, } from 'react'
-import { Button, Container, Dropdown, Form, } from 'react-bootstrap'
+import { Container, Dropdown, Form, } from 'react-bootstrap'
 import { Context } from '..'
 
 const Filters = observer(() => {
