@@ -11,8 +11,7 @@ const BasketItem = observer(({item}) => {
   function addToBasket(item) {
     if(product.basketProducts.includes(item)){
       item.count = item.count + 1
-    }
-    else {
+    } else {
       item.count = 1
       product.setAddBasketProducts(item)
     }

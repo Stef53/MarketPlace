@@ -26,7 +26,6 @@ export default function Header() {
           <Container className=' d-flex justify-content-end'>
             <Image onClick={() => {
               product.setCurrentPage('favorite')
-              console.log(product.currentPage)
               history(FAVORITE_ROUTE)
             }} 
               src={liked} width={25} height={25} className='m-2 product-card' style={{cursor:'pointer'}}

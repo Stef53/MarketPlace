@@ -3,12 +3,7 @@ import Header from "./components/Header";
 import AppRouter from "./components/AppRouter";
 import { ToastContainer } from 'react-toastify';
 
-
-
-
 function App() {
-
-
   return (
     <div className="bg-info bg-gradient" style={{minHeight: 721}}>
       <Header />

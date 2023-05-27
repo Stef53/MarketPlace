@@ -5,42 +5,33 @@ import { Context } from '..'
 
 const Filters = observer(() => {
   const {product} = useContext(Context)
-  let value = product.selectedFilter
 
-
-  const sortProducts = (value) => {
-    if (product.selectedCategory.name === 'all categories'){
-      if(value === 'title'){
-        let allProducts = [...product.products].sort((a, b) => a[value].localeCompare(b[value]))
-        product.setProducts(allProducts)
-      } else {
-          let allProducts = [...product.products].sort((a, b) => a[value] - b[value])
-          product.setProducts(allProducts)
-        }
-    } else {
-      if(value === 'title'){
-        let categoryProducts = [...product.categoryProducts].sort((a, b) => a[value].localeCompare(b[value]))
-        product.setCategoryProducts(categoryProducts)
-      } else {
-          let categoryProducts = [...product.categoryProducts].sort((a, b) => a[value] - b[value])
-          product.setCategoryProducts(categoryProducts)
-        }
+  const sortProducts = (name, value) => {
+    if(name === 'Alfabeticaly'){
+      product.setProducts([...product.products].sort((a, b) => a[value].localeCompare(b[value])))
+    } 
+    if(name === 'Сheap first') {
+      product.setProducts([...product.products].sort((a, b) => a[value] - b[value]))
+    }
+    if(name === 'Expensive first') {
+      product.setProducts([...product.products].sort((a, b) => b[value] - a[value]))
     }
   }
+
   return (
     <Container className=' d-flex align-items-end'>
       <Dropdown>
         <Dropdown.Toggle variant="primary" id="dropdown-basic">
           Filters
         </Dropdown.Toggle>
-        <Dropdown.Menu value={value}>
+        <Dropdown.Menu>
           {product.filters.map(filter =>
             <Dropdown.Item 
-              key={filter.value} 
+              key={filter.id} 
               value={filter.value}
               onClick={() => {
                 product.setSelectedFilter(filter)
-                sortProducts(filter.value)
+                sortProducts(filter.name, filter.value)
               }}
             >
               {filter.name}

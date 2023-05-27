@@ -10,18 +10,17 @@ export default class ProductStore {
       {id: 4, name: "electronics"},
     ]
     this._products = []
-    this._categoryProducts = []
     this._selectedCategory = {id: 0, name: 'all categories'}
     this._page = 1
     this._totalCount = 0
     this._limit = 8
     this._filters = [
-      {name: 'Alfabeticaly', value: 'title'},
-      {name: 'By price', value: 'price'},
+      {id: 1, name: 'Alfabeticaly', value: 'title'},
+      {id: 2, name: 'Сheap first', value: 'price'},
+      {id: 3, name: 'Expensive first', value: 'price'},
     ]
     this._selectedFilter = {name: 'Default', value: '0'}
     this._basketProducts = []
-    this._favoriteProducts = []
     this._searchValue = ''
     this._currentPage = 'shop'
 
@@ -33,9 +32,6 @@ export default class ProductStore {
   }
   setProducts(products){
     this._products = products
-  }
-  setCategoryProducts(categoryProducts){
-    this._categoryProducts = categoryProducts
   }
   setSelectedCategory(categories){
     this._selectedCategory = categories
@@ -57,15 +53,6 @@ export default class ProductStore {
   }
   setAddBasketProducts(basketProducts){
     this._basketProducts.push(basketProducts)
-  }
-  setFavoriteProducts(favoriteProducts){
-    this._favoriteProducts = favoriteProducts
-  }
-  setAddFavoriteProducts(favoriteProducts){
-    this._favoriteProducts.push(favoriteProducts)
-  }
-  setDeleteFavoriteProducts(favoriteProducts){
-    this._favoriteProducts.splice(this._favoriteProducts.indexOf(favoriteProducts), 1)
   }
   setSearchValue(searchValue){
     this._searchValue = searchValue
@@ -103,9 +90,6 @@ export default class ProductStore {
   }
   get basketProducts(){
     return this._basketProducts
-  }
-  get favoriteProducts(){
-    return this._favoriteProducts
   }
   get searchValue(){
     return this._searchValue

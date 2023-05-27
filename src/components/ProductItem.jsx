@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Col, Image, Card } from 'react-bootstrap'
 import star from '../assets/icons/star.png'
 import plus from '../assets/icons/plus.png'
@@ -13,13 +13,16 @@ import { toast } from 'react-toastify'
 const ProductItem = observer(({item}) => {
   const {product} = useContext(Context)
   const history = useNavigate()
-  const [isLiked, setIsLiked] = useState(false)
-
 
   const onHeartClick = (item) => {
-    if(isLiked === false){
-      setIsLiked(true)
-    } else setIsLiked(false)
+    if(item.isLiked === false){
+      item.isLiked = true
+      localStorage.setItem('favorite', JSON.stringify(product.products.filter((el) => el.isLiked === true)))
+    } else 
+      {
+        item.isLiked = false
+        localStorage.setItem('favorite', JSON.stringify(product.products.filter((el) => el.isLiked === true)))
+      }
   }
 
   function addToBasket(item) {
@@ -31,13 +34,7 @@ const ProductItem = observer(({item}) => {
       product.setAddBasketProducts(item)
     }
   }
-  const addOrDeleteFavoriteProduct = (item) => {
-    if(product.favoriteProducts.includes(item)){
-      product.setDeleteFavoriteProducts(item)
-    } else {
-      product.setAddFavoriteProducts(item)
-    }
-  }
+
   const notify = () => toast(`${item.title} added to cart!`)
 
     return (
@@ -64,10 +61,9 @@ const ProductItem = observer(({item}) => {
               <div className='mt-1 d-flex justify-content-between align-items-center' style={{color: 'black'}}>
                 <div className='m-1'>Price: {item.price}$</div>
                 <div className=''>
-                <Image className='m-1 product-card' src={isLiked ? liked: unliked} width={20} height={20} style={{cursor: 'pointer', fill:'red'}} 
+                <Image className='m-1 product-card' src={item.isLiked ? liked: unliked} width={20} height={20} style={{cursor: 'pointer', fill:'red'}} 
                    onClick={() => {
                     onHeartClick(item)
-                    addOrDeleteFavoriteProduct(item)
                   }}
                 /> 
                 <Image 

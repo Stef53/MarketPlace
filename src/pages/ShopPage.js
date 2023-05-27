@@ -4,7 +4,7 @@ import { Col, Container, Row as Form } from 'react-bootstrap';
 import ProductsList from '../components/ProductsList';
 import { observer } from 'mobx-react-lite';
 import { Context } from '..';
-import { fetchCategoryProducts, fetchProducts } from '../http/productAPI';
+import { fetchProducts } from '../http/productAPI';
 import Pages from '../components/Pages';
 import Filters from '../components/Filters'
 import 'react-toastify/dist/ReactToastify.css'
@@ -16,30 +16,27 @@ const ShopPage = observer(() => {
   useEffect(() => {
     fetchProducts().then(data => {
       product.setProducts(data)
+      let favotireProducts = JSON.parse(localStorage.getItem('favorite'))
+      product.products.map((el) => {
+        for(let i = 0; i < favotireProducts.length; i++){
+          if(el.id === favotireProducts[i].id){
+            el.isLiked = true
+            break
+          } else {
+              el.isLiked = false
+          }
+        }
+        return el
+      })
+      product.setTotalCount(data.length)
     })
   },[product])
   
-  async function categoriesProducts(category){
-    if(category.name === 'all categories'){
-      await fetchProducts().then(data => {
-        product.setProducts(data)
-        product.setTotalCount(data.length)
-      })
-    } else{
-     await fetchCategoryProducts(category.name).then(data => {
-        product.setCategoryProducts(data)
-        product.setTotalCount(data.length)
-        product.setPage(1)
-      })
-    }
-  }
-
   return (
     <Container className=' align-items-center bg-light bg-gradient mt-5 mb-5' style={{border:'2px solid lightgray', borderRadius:30, boxShadow:'3px 3px 3px gray'}}>
       <Form className='mt-5'>
         <Col md={2}>
-          <CategoryBar onClick={categoriesProducts(product.selectedCategory)}
-          />
+          <CategoryBar />
         </Col>
         <Col md={9}>
           <Filters />
