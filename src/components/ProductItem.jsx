@@ -15,12 +15,12 @@ const ProductItem = observer(({item}) => {
   const history = useNavigate()
 
   const onHeartClick = (item) => {
-    if(item.isLiked === false){
-      item.isLiked = true
+    if(item.isLiked === true){
+      item.isLiked = false
       localStorage.setItem('favorite', JSON.stringify(product.products.filter((el) => el.isLiked === true)))
     } else 
       {
-        item.isLiked = false
+        item.isLiked = true
         localStorage.setItem('favorite', JSON.stringify(product.products.filter((el) => el.isLiked === true)))
       }
   }

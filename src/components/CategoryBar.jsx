@@ -5,6 +5,14 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 const CategoryBar = observer(() => {
   const {product} = useContext(Context) 
+
+  const paginationControl = (category) => {
+    product.setSelectedCategory(category)
+    product.setPage(1)
+    if(category.name === 'all categories'){
+      product.setTotalCount(product.products.length)
+    } else product.setTotalCount(product.products.filter((el) => el.category === category.name).length)
+  }
   return (
     <ListGroup as="ul">
       {product.categories.map(category =>
@@ -12,7 +20,7 @@ const CategoryBar = observer(() => {
         style={{cursor: 'pointer'}}
         active = {category.id === product.selectedCategory.id}
         key={category.id} 
-        onClick={() => product.setSelectedCategory(category)}
+        onClick={() => paginationControl(category)}
       >
         {category.name}
       </ListGroup.Item>
