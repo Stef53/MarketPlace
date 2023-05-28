@@ -15,22 +15,24 @@ export default function Header() {
   return (
       <Navbar collapseOnSelect expand="lg" bg="light" variant="dark">
         <Container>
-          <NavLink onClick={() => {
+          <NavLink
+            className='logo' 
+            onClick={() => {
               product.setCurrentPage('shop')
               history(SHOP_ROUTE)
             }} 
-            style={{color: 'black', fontSize: 40}}
-            >
-              MarketPlace
-            </NavLink>
+          >
+            MarketPlace
+          </NavLink>
           <Container className=' d-flex justify-content-end'>
-            <Image onClick={() => {
-              product.setCurrentPage('favorite')
-              history(FAVORITE_ROUTE)
-            }} 
-              src={liked} width={25} height={25} className='m-2 product-card' style={{cursor:'pointer'}}
+            <Image 
+              src={liked} width={25} height={25} className='m-2 product-card'
+              onClick={() => {
+                product.setCurrentPage('favorite')
+                history(FAVORITE_ROUTE)
+              }} 
             />
-            <NavLink style={{color: 'black'}} >
+            <NavLink>
               <BasketModal />
             </NavLink>
           </Container>

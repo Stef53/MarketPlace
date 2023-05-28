@@ -33,7 +33,7 @@ const ShopPage = observer(() => {
   },[product])
   
   return (
-    <Container className=' align-items-center bg-light bg-gradient mt-5 mb-5' style={{border:'2px solid lightgray', borderRadius:30, boxShadow:'3px 3px 3px gray'}}>
+    <Container className='bg-light bg-gradient mt-5 mb-5 content-wrapper'>
       <Form className='mt-5'>
         <Col md={2}>
           <CategoryBar />

@@ -17,7 +17,7 @@ const CategoryBar = observer(() => {
     <ListGroup as="ul">
       {product.categories.map(category =>
       <ListGroup.Item 
-        style={{cursor: 'pointer'}}
+        className='category-bar-item'
         active = {category.id === product.selectedCategory.id}
         key={category.id} 
         onClick={() => paginationControl(category)}

@@ -16,38 +16,28 @@ export default function ProductPage() {
   },[id])
 
   return (
-    <Container 
-      className='mt-4 mb-4 p-4 bg-light bg-gradient justify-content-center'
-      style={{border:'2px solid lightgray', borderRadius:'30px', boxShadow:'3px 3px 3px gray', minHeight:450}}
-    >
+    <Container className='mt-4 mb-4 p-4 bg-light bg-gradient content-wrapper'>
       <Row className=''>
         <Col md={4} className='align-items-center'>
-          <Container
-            style={{width:260, height:40, fontSize:24, color:'white', background: 'gray', textTransform: 'uppercase', borderRadius:30}}
-            className='mt-4 d-flex justify-content-center'
-          >
+          <Container className='mt-4 d-flex justify-content-center product-container'>
             {item.category}
           </Container>
-          <Image fluid style={{height:300, width:300}}  src={item.image} className='m-5'/>
+          <Image fluid src={item.image} className='m-5 product-page-img'/>
         </Col>
         <Col md={8}>
             <div>
               <h2 className='m-3'>{item.title}</h2>
-              <p
-                className='m-3'
-                style={{fontSize:20}}
-              >
+              <p className='m-3 product-page-description'>
                 {item.description}
               </p>
             </div>
             <div className=' d-flex justify-content-between'>
-              <h3 className='m-2'>Price: {item.price}$</h3>
+              <h3 className='m-3'>Price: {item.price}$</h3>
             </div>  
         </Col>
         <div className=' d-flex justify-content-center'>
-          < Button 
-            style={{fontSize:20, width:300, position:'absolute', bottom:0}} variant="primary" 
-            className='m-4' onClick={() => {
+          < Button variant="primary" className='m-4 back-btn product-page-btn' 
+            onClick={() => {
               product.setCurrentPage('shop')
               history(SHOP_ROUTE)
             }} 

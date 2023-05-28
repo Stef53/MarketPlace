@@ -15,14 +15,8 @@ const ProductItem = observer(({item}) => {
   const history = useNavigate()
 
   const onHeartClick = (item) => {
-    if(item.isLiked === true){
-      item.isLiked = false
-      localStorage.setItem('favorite', JSON.stringify(product.products.filter((el) => el.isLiked === true)))
-    } else 
-      {
-        item.isLiked = true
-        localStorage.setItem('favorite', JSON.stringify(product.products.filter((el) => el.isLiked === true)))
-      }
+    item.isLiked = !item.isLiked
+    localStorage.setItem('favorite', JSON.stringify(product.products.filter((el) => el.isLiked === true)))
   }
 
   function addToBasket(item) {
@@ -39,14 +33,15 @@ const ProductItem = observer(({item}) => {
 
     return (
     <Col md={3} className='mt-3'>
-      <Card className=' justify-content-center product-card' style={{ boxShadow:'2px 2px 5px gray',}} border={"lightgray"}>
+      <Card className='product-card' border={"lightgray"}>
         <div>
           <div className='product-card'>
-          <Image className='card-img' src={item.image} style={{ cursor: 'pointer',}} 
-          onClick={() => {
-            product.setCurrentPage('product')
-            history(PRODUCT_ROUTE + '/' + item.id)
-          }} />
+            <Image className='card-img' src={item.image}
+              onClick={() => {
+                product.setCurrentPage('product')
+                history(PRODUCT_ROUTE + '/' + item.id)
+              }} 
+            />
           </div>
               <div>
               <div className='text-black-50 mt-1 d-flex justify-content-between align-items-center' >
@@ -56,18 +51,18 @@ const ProductItem = observer(({item}) => {
                 <Image src={star} width={13} height={13}/>
               </div>
             </div>
-            <div className='product-title' style={{height:25}}>{item.title}</div>
+            <div className='product-title'>{item.title}</div>
             <div className='card d-flex bg-white'>
-              <div className='mt-1 d-flex justify-content-between align-items-center' style={{color: 'black'}}>
+              <div className='mt-1 d-flex justify-content-between align-items-center'>
                 <div className='m-1'>Price: {item.price}$</div>
                 <div className=''>
-                <Image className='m-1 product-card' src={item.isLiked ? liked: unliked} width={20} height={20} style={{cursor: 'pointer', fill:'red'}} 
+                <Image className='m-1 product-card' src={item.isLiked ? liked: unliked} width={20} height={20}
                    onClick={() => {
                     onHeartClick(item)
                   }}
                 /> 
                 <Image 
-                  className='m-1 product-card' src={plus} width={20} height={20} style={{cursor: 'pointer',}} 
+                  className='m-1 product-card' src={plus} width={20} height={20}
                   onClick={() => {
                     addToBasket(item)
                     notify()

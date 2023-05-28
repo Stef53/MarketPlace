@@ -7,14 +7,14 @@ const Filters = observer(() => {
   const {product} = useContext(Context)
 
   const sortProducts = (name, value) => {
-    if(name === 'Alfabeticaly'){
-      product.setProducts([...product.products].sort((a, b) => a[value].localeCompare(b[value])))
-    } 
-    if(name === 'Сheap first') {
-      product.setProducts([...product.products].sort((a, b) => a[value] - b[value]))
-    }
-    if(name === 'Expensive first') {
-      product.setProducts([...product.products].sort((a, b) => b[value] - a[value]))
+    switch(name) {
+      case 'Alfabeticaly': product.setProducts([...product.products].sort((a, b) => a[value].localeCompare(b[value])))
+        break
+      case 'Сheap first': product.setProducts([...product.products].sort((a, b) => a[value] - b[value]))
+        break
+      case 'Expensive first': product.setProducts([...product.products].sort((a, b) => b[value] - a[value]))
+        break
+      default: alert('Filter erorr')
     }
   }
 
@@ -46,7 +46,10 @@ const Filters = observer(() => {
             placeholder="Search"
             className="me-2"
             aria-label="Search"
-            onChange={(event) => product.setSearchValue(event.target.value)}
+            onChange={(event) => {
+              product.setSearchValue(event.target.value)
+              product.setTotalCount(product.products.filter(item => item.title.toLowerCase().includes(product.searchValue.toLowerCase())).length)
+            }}
           />
         </Form>
       </Container>

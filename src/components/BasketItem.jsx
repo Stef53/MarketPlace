@@ -23,10 +23,7 @@ const BasketItem = observer(({item}) => {
     } else item.count = item.count - 1
   }
   return (
-    <Container 
-      className='mt-2 mb-2 p-2 bg-light bg-gradient'
-      style={{border:'2px solid lightgray', borderRadius:'30px', boxShadow:'3px 3px 3px gray'}}
-    >
+    <Container className='mt-2 mb-2 p-2 bg-light bg-gradient content-wrapper'>
       <Row>
         <Col xs={4}>
           <Image width={100} height={100} src={item.image} className='m-1'/>
@@ -39,12 +36,12 @@ const BasketItem = observer(({item}) => {
           <div className=''>{item.price * item.count}$</div>
           <div className=' d-flex'>
             <Image 
-              className='m-1 product-card' src={minus} width={20} height={20} style={{cursor: 'pointer',}} 
+              className='m-1 product-card' src={minus} width={20} height={20}
               onClick={() => deleteBasketItem(item)}
             /> 
             <div className='ml-1'>{item.count}</div>
             <Image 
-                className='m-1 product-card' src={plus} width={20} height={20} style={{cursor: 'pointer',}} 
+                className='m-1 product-card' src={plus} width={20} height={20} 
                 onClick={() => addToBasket(item)}
             />
           </div>

@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
-    <div className="bg-info bg-gradient" style={{minHeight: 721}}>
+    <div className="App">
       <Header />
       <AppRouter />
       <ToastContainer 

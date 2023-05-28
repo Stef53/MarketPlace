@@ -6,12 +6,8 @@ import { Pagination } from 'react-bootstrap'
 const Pages = observer(() => {
   const {product} = useContext(Context)
   const pageCount = Math.ceil(product.totalCount / product.limit)
-  const pages = []
+  const pages = Array.from({length: pageCount}, (_, i) => i + 1)
 
-
-  for (let i = 0; i < pageCount; i++) {
-    pages.push(i + 1)
-  }
   return (
     <Pagination className='mt-5'>
       {pages.map(page => 

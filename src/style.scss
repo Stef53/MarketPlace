@@ -1,9 +1,40 @@
 body{
   height: 100vh;
+  background: #00cae9;
+}
+h2{
+  text-align: center;
+}
+.content-wrapper{
+  border: 2px solid lightgray; 
+  border-radius: 30px; 
+  box-shadow:3px 3px 3px gray;
+}
+
+.product-container{
+  width: 260px; 
+  height: 40px; 
+  font-size: 24px; 
+  color:white; 
+  background: gray; 
+  text-transform: uppercase; 
+  border-radius: 30px;
+}
+.product-page-img{
+  width: 300px;
+  height: 300px;
+}
+.product-page-description{
+  font-size: 20px;
+}
+.back-btn{
+  font-size:20px; 
+  width:300px; 
 }
 
 .product-card{
   transition:all 0.3s;
+  cursor: pointer;
 
   &:hover{
     transform: scale(1.10);
@@ -13,6 +44,7 @@ body{
   height: 200px;
 }
 .product-title{
+  height: 25px;
   overflow: hidden;
   position: relative;
 
@@ -32,7 +64,9 @@ body{
   font-size: 50px;
   color: rgb(44, 44, 44);
 }
-.favorite-container{
-  border-radius: 30px;
-
+.category-bar-item{
+  cursor: pointer;
+}
+.logo{
+  font-size: 40px;
 }

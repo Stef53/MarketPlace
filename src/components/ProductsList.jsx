@@ -12,16 +12,10 @@ const ProductsList = observer(() =>  {
   const lastProduct = product.limit * product.page 
     
   if(product.selectedCategory.name === 'all categories'){
-    thisProduct = product.products.filter((el) => {
-      return (firstProduct < product.products.indexOf(el)) && (product.products.indexOf(el) < lastProduct)
-    })
+    thisProduct = product.products.filter((el) => (firstProduct < product.products.indexOf(el)) && (product.products.indexOf(el) < lastProduct))
   } else {
-    thisProduct = product.products.filter((el) => {
-      return el.category === product.selectedCategory.name
-    })
-    thisProduct = thisProduct.filter((el) => {
-      return (firstProduct < thisProduct.indexOf(el)) && (thisProduct.indexOf(el) < lastProduct)
-    })
+    thisProduct = product.products.filter((el) => el.category === product.selectedCategory.name)
+    thisProduct = thisProduct.filter((el) => (firstProduct < thisProduct.indexOf(el)) && (thisProduct.indexOf(el) < lastProduct))
   }
   if(product.currentPage === 'favorite'){
     thisProduct = product.products.filter((el) => el.isLiked === true)

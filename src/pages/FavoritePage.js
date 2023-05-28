@@ -20,14 +20,14 @@ const FavoritePage = observer(() => {
     )
   }
   return (
-    <Container className='favorite-container w-75 align-items-center bg-light bg-gradient mt-5 px-4'>
-      <Row className=''>
-        <Col className=' justify-content-center align-items-center'>
+    <Container className='content-wrapper w-75 bg-light bg-gradient mt-5 px-4'>
+      <Row>
+        <Col>
           {
-            product.products.filter((el) => el.isLiked === true).length > 0 ? showItems() : <h1 className=' align-items-center' style={{textAlign:'center'}}>No favorites</h1>
+            product.products.filter((el) => el.isLiked === true).length > 0 ? showItems() : <h2 className=''>No favorites</h2>
           } 
           <div className=' d-flex justify-content-center my-4'>
-            <Button style={{fontSize:20, width:300,}} variant="primary" 
+            <Button className='back-btn' variant="primary" 
               onClick={() => {
                 product.setCurrentPage('shop')
                 history(SHOP_ROUTE)

@@ -23,27 +23,21 @@ const BasketModal = observer(() => {
       </div>
     )
   }
+  
   const showNothing = () => {
     return(
       <div>
-        <h2 style={{textAlign: 'center'}}>Basket is lonely without products</h2>
+        <h2>Basket is lonely without products</h2>
       </div>
     )
   }
-  const totalPrice = () => {
-    let sum = 0
-    for(let i = 0; i < product.basketProducts.length; i++) {
-      sum += product.basketProducts[i].price * product.basketProducts[i].count
-    }
-    return sum
-  }
+
+  const totalPrice = product.basketProducts.reduce((total, product) => total + product.price * product.count, 0)
+
   return (
     <>
-      <Image className='m-1 product-card' width={30} height={30} style={{color: 'white'}} src={basket} onClick={handleShow}/>
-      <span 
-        className=' '
-        style={{border:'1px solid lightgray', color:'black', background:'white', borderRadius:'50%', width:'10', height:'10', fontSize:12}}
-      >
+      <Image className='m-1 product-card' width={30} height={30} src={basket} onClick={handleShow}/>
+      <span>
         {product.basketProducts.length}
       </span>
 
@@ -59,7 +53,7 @@ const BasketModal = observer(() => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <div>Total price:  {totalPrice()}$</div>
+          <div>Total price:  {totalPrice}$</div>
           <Button variant="primary" onClick={handleClose}>
             Make an order
           </Button>
